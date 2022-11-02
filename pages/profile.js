@@ -8,7 +8,7 @@ export default function ProfilePage({ trending }) {
 
   useEffect(() => {
     const unsubscribe = async () => {
-      await fetch('http://localhost:3000/api/user')
+      await fetch('http://localhost:3001/api/user')
         .then((res) => res.json())
         .then((v) => setUser(v.data));
     };
@@ -31,14 +31,14 @@ export default function ProfilePage({ trending }) {
 }
 
 export async function getStaticProps() {
-  const trending = await fetch('https://jsonkeeper.com/b/L9MH').then((res) =>
-    res.json()
-  );
-  // const res = await fetch('http://localhost:3000/api/user').then((res) => res.json());
+  // const trending = await fetch('https://jsonkeeper.com/b/L9MH').then((res) =>
+  //   res.json()
+  // );
+  const res = await fetch('http://localhost:3001/api/user').then((res) => res.json());
   return {
     props: {
-      // user: res.data,
-      trending: trending.data,
+      user: res.data,
+      // trending: trending.data,
     },
   };
 }

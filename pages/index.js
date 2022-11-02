@@ -23,9 +23,11 @@ export default function Home({ tweets, trending }) {
 
 export async function getServerSideProps() {
   const tweets = await prisma.post.findMany({ include: { author: true } ,orderBy:{createdAt:'desc'}});
-  const trending = await fetch('https://jsonkeeper.com/b/L9MH').then((res) =>
-    res.json()
-  );
+  // const trending = await fetch('https://jsonkeeper.com/b/L9MH').then((res) =>
+  //   res.json()
+  // );
+  const trending = await fetch('http://localhost:3001/api/user').then((res) => res.json());
+
 
   //   newsLetters.map(x => {
   //     x.createdAt = Math.floor(x.createdAt / 1000);
@@ -40,7 +42,7 @@ export async function getServerSideProps() {
   return {
     props: {
       tweets,
-      trending: trending.data,
+      // trending: trending.data,
     },
   };
 }

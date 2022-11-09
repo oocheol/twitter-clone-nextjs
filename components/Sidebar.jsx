@@ -18,7 +18,9 @@ export default function Sidebar({ titleRef,canTweet }) {
   return (
     <div className=' lg:pr-2 fixed'>
       <div className='flex flex-col items-center md:items-start md:ml-4 space-y-3'>
-        <Link href='/' passHref>
+        <Link href='/'
+              passHref
+        >
           <div className='hover-animation w-16 h-16 flex items-center justify-center'>
             <Image
               src='https://iconsplace.com/wp-content/uploads/_icons/ffffff/256/png/twitter-icon-18-256.png'
